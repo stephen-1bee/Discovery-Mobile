@@ -1,37 +1,57 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { View, Text } from "react-native"
+import React from "react"
+import { Tabs, Redirect } from "expo-router"
+import { Feather } from "@expo/vector-icons"
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const TabLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+    <>
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: "FFA500",
+          tabBarInactiveTintColor: "#CDCDEO",
+          tabBarStyle: {
+            // backgroundColor: "#FFA500",
+            borderRadius: 50,
+            shadowColor: "#FFA500",
+          },
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
-  );
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            headerShown: false,
+            title: "HOME",
+            tabBarIcon: () => <Feather name="home" size={20} />,
+          }}
+        />
+        <Tabs.Screen
+          name="people"
+          options={{
+            headerShown: false,
+            title: "PEOPLE",
+            tabBarIcon: () => <Feather name="users" size={20} />,
+          }}
+        />
+        <Tabs.Screen
+          name="bookmark"
+          options={{
+            title: "BOOKMARKS",
+            headerShown: false,
+            tabBarIcon: () => <Feather name="bookmark" size={20} />,
+          }}
+        />
+        <Tabs.Screen
+          name="setting"
+          options={{
+            headerShown: false,
+            title: "SETTINGS",
+            tabBarIcon: () => <Feather name="settings" size={20} />,
+          }}
+        />
+      </Tabs>
+    </>
+  )
 }
+
+export default TabLayout
