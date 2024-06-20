@@ -8,10 +8,9 @@ const TabLayout = () => {
     <>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: "FFA500",
-          tabBarInactiveTintColor: "#CDCDEO",
+          tabBarActiveTintColor: "red",
+          //   tabBarInactiveTintColor: "#CDCDEO",
           tabBarStyle: {
-            // backgroundColor: "#FFA500",
             borderRadius: 50,
             shadowColor: "#FFA500",
           },
@@ -22,7 +21,9 @@ const TabLayout = () => {
           options={{
             headerShown: false,
             title: "HOME",
-            tabBarIcon: () => <Feather name="home" size={20} />,
+            tabBarIcon: ({ color, focused }) => (
+              <Feather name="home" size={20} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
@@ -30,7 +31,9 @@ const TabLayout = () => {
           options={{
             headerShown: false,
             title: "PEOPLE",
-            tabBarIcon: () => <Feather name="users" size={20} />,
+            tabBarIcon: ({ color, focused }) => (
+              <Feather name="users" size={20} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
@@ -38,7 +41,9 @@ const TabLayout = () => {
           options={{
             title: "BOOKMARKS",
             headerShown: false,
-            tabBarIcon: () => <Feather name="bookmark" size={20} />,
+            tabBarIcon: ({ color }) => (
+              <Feather name="bookmark" size={20} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
@@ -46,7 +51,9 @@ const TabLayout = () => {
           options={{
             headerShown: false,
             title: "SETTINGS",
-            tabBarIcon: () => <Feather name="settings" size={20} />,
+            tabBarIcon: ({ color }) => (
+              <Feather name="settings" size={20} color={color} />
+            ),
           }}
         />
       </Tabs>
